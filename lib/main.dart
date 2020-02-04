@@ -90,7 +90,7 @@ class CalculateNumbers extends StatelessWidget {
       },
     );
 
-    Container container = Container(
+    /*Container container = Container(
       padding: const EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
@@ -108,6 +108,29 @@ class CalculateNumbers extends StatelessWidget {
               children: <Widget>[multButton, divButton],
             ),
           )
+        ],
+      ),
+    );*/
+    Container container = Container(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        children: <Widget>[
+          textField_one,
+          textField_two,
+          Container(
+            padding: EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[addButton, subButton],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[multButton, divButton],
+            ),
+          ),
         ],
       ),
     );
