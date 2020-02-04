@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-  title: 'Calculate Two numbers',
-  home: CalculateNumbers(),
-));
+      title: 'Calculate Two numbers',
+      home: CalculateNumbers(),
+    ));
 
-class CalculateNumbers extends StatelessWidget{
+class CalculateNumbers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     double number_one = 0.0;
     double number_two = 0.0;
 
@@ -16,10 +15,10 @@ class CalculateNumbers extends StatelessWidget{
     TextField textField_one = TextField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Number 1"),
-      onChanged: (String value){
-        try{
+      onChanged: (String value) {
+        try {
           number_one = double.parse(value);
-        }catch(exception){
+        } catch (exception) {
           number_one = 0.0;
         }
       },
@@ -29,10 +28,10 @@ class CalculateNumbers extends StatelessWidget{
     TextField textField_two = TextField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: "Number 2"),
-      onChanged: (String value){
-        try{
+      onChanged: (String value) {
+        try {
           number_two = double.parse(value);
-        }catch(exception){
+        } catch (exception) {
           number_two = 0.0;
         }
       },
@@ -41,10 +40,10 @@ class CalculateNumbers extends StatelessWidget{
     //create Button
     RaisedButton addButton = RaisedButton(
       child: Text("Add"),
-      onPressed: (){
-      double addResult = number_one + number_two;
+      onPressed: () {
+        double addResult = number_one + number_two;
 
-      //Generate Dialog
+        //Generate Dialog
         AlertDialog dialog = AlertDialog(
           content: Text('Total Result \$$addResult'),
         );
@@ -54,7 +53,7 @@ class CalculateNumbers extends StatelessWidget{
 
     RaisedButton subButton = RaisedButton(
       child: Text("Sub"),
-      onPressed: (){
+      onPressed: () {
         double subResult = number_one - number_two;
 
         //Generate Dialog
@@ -67,7 +66,7 @@ class CalculateNumbers extends StatelessWidget{
 
     RaisedButton multButton = RaisedButton(
       child: Text("Mult"),
-      onPressed: (){
+      onPressed: () {
         double multResult = number_one * number_two;
 
         //Generate Dialog
@@ -80,7 +79,7 @@ class CalculateNumbers extends StatelessWidget{
 
     RaisedButton divButton = RaisedButton(
       child: Text("Div"),
-      onPressed: (){
+      onPressed: () {
         double divResult = number_one / number_two;
 
         //Generate Dialog
@@ -95,7 +94,20 @@ class CalculateNumbers extends StatelessWidget{
       padding: const EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
-          textField_one, textField_two, addButton,subButton,multButton,divButton
+          textField_one,
+          textField_two,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[addButton, subButton],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[multButton, divButton],
+            ),
+          )
         ],
       ),
     );
@@ -105,11 +117,10 @@ class CalculateNumbers extends StatelessWidget{
     );
 
     Scaffold scaffold = Scaffold(
-    appBar:  appBar,body: container,
+      appBar: appBar,
+      body: container,
     );
 
     return scaffold;
-
   }
-
 }
